@@ -76,6 +76,25 @@
   }
 }
 
+// Monogram theme toggling
+.theme-toggle-light,
+.theme-toggle-dark {
+  display: none; // Initially hide both
+}
+
+html[data-theme='light'] .theme-toggle-light {
+  display: inline-block !important;
+}
+
+html[data-theme='dark'] .theme-toggle-dark {
+  display: inline-block !important;
+}
+
+// Fallback for when system preference is light and no explicit theme is set, or dark mode is off
+// This ensures the light monogram shows by default if dark mode isn't active or enabled.
+// The primary logic is within the html[data-theme='light/dark'] selectors.
+// If site.enable_darkmode is false, the Liquid template only includes the light monogram by default.
+
 html[data-theme="dark"] {
   color-scheme: dark;
   --global-bg-color: #{$grey-color-dark};
