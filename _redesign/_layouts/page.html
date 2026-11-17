@@ -1,0 +1,15 @@
+---
+layout: default
+---
+<div class="wrap inner-page">
+  {% include breadcrumbs.html %}
+  <div class="page-grid">
+    {% include sidebar.html %}
+    <article class="page-article">
+      <header class="page-heading"><p class="eyebrow">{{ page.kicker | default: 'The personal collection' }}</p><h1>{{ page.title }}</h1>{% if page.description %}<p class="page-deck">{{ page.description }}</p>{% endif %}{% if page.status == 'draft' %}<p class="draft-note"><span aria-hidden="true"></span>Archive in progress</p>{% endif %}</header>
+      <div class="prose">{{ content }}</div>
+      {% assign children = site.data.navigation | where: 'parent', page.nav_id %}
+      {% if children.size > 0 %}<section class="child-directory" aria-label="Explore this section">{% for item in children %}<a href="{{ item.url | relative_url }}"><div><h2>{{ item.title }}</h2>{% if item.description %}<p>{{ item.description }}</p>{% endif %}</div><span aria-hidden="true"><svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a>{% endfor %}</section>{% endif %}
+    </article>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+- id: heraldic
+  title: Heraldic
+  colors: ['#17395c', '#a7323d', '#ba944e']
+  description: Deep blue, a measured touch of crimson, and antique gold. A personal direction drawn from the colors of your heraldic device.
+- id: collegiate
+  title: Collegiate
+  colors: ['#153750', '#a88b4d', '#f6f1e5']
+  description: Navy and warm gold on ivory. A traditional academic character, inspired by the university colors you mentioned.
+- id: northern
+  title: Northern
+  colors: ['#135589', '#5f90af', '#d5e7f3']
+  description: Layers of blue, with cool paper and slate tones. Clear, calm, and a little more contemporary.
+- id: graphite
+  title: Graphite
+  colors: ['#25282b', '#6e7479', '#e5e5e2']
+  description: Ink, stone, and paper. A restrained palette that lets the portrait, typography, and individual projects provide the color.
