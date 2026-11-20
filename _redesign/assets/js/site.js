@@ -1,87 +1,143 @@
-/* Progressive enhancements; page content and ordinary navigation need no JavaScript. */
+/* Personal Archive: progressive navigation and a remembered color scheme. */
 (() => {
   'use strict';
-  const root = document.documentElement;
-  const media = matchMedia('(prefers-color-scheme: dark)');
-  const palettes = ['heraldic', 'collegiate', 'northern', 'graphite'];
-  const names = {heraldic: 'Heraldic', collegiate: 'Collegiate', northern: 'Northern', graphite: 'Graphite'};
-  let mode = root.dataset.mode || 'system';
-  let palette = root.dataset.palette || 'heraldic';
-  const status = document.getElementById('appearance-status');
-  const modeToggle = document.getElementById('mode-toggle');
 
-  function applyPreferences(announce = false) {
-    const theme = mode === 'system' ? (media.matches ? 'dark' : 'light') : mode;
-    root.dataset.mode = mode;
+  const root = document.documentElement;
+  const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+  const desktop = window.matchMedia('(min-width: 761px)');
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeStatus = document.getElementById('theme-status');
+  const themePreference = document.getElementById('theme-preference');
+  const systemButtons = document.querySelectorAll('[data-use-system]');
+  const preferences = ['light', 'dark', 'system'];
+  let preference = preferences.includes(root.dataset.preference)
+    ? root.dataset.preference
+    : 'system';
+
+  function applyTheme(announce = false) {
+    const theme = preference === 'system'
+      ? (systemTheme.matches ? 'dark' : 'light')
+      : preference;
+    root.dataset.preference = preference;
     root.dataset.theme = theme;
-    root.dataset.palette = palette;
-    try { localStorage.setItem('smd-mode', mode); localStorage.setItem('smd-palette', palette); } catch (_) {}
-    document.querySelectorAll('[name="palette"]').forEach(input => { input.checked = input.value === palette; });
-    document.querySelectorAll('[name="display-mode"]').forEach(input => { input.checked = input.value === mode; });
-    document.querySelectorAll('[data-select-palette]').forEach(button => {
-      const active = button.dataset.selectPalette === palette;
-      button.setAttribute('aria-pressed', String(active));
-      const label = button.querySelector('[data-palette-button-text]');
-      if (label) label.textContent = active ? 'Selected palette' : 'Try this palette';
+    root.style.colorScheme = theme;
+
+    if (themeToggle) {
+      themeToggle.hidden = false;
+      themeToggle.setAttribute('aria-checked', String(theme === 'dark'));
+      themeToggle.setAttribute('title', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
+    }
+    systemButtons.forEach(button => {
+      button.hidden = false;
+      button.setAttribute('aria-pressed', String(preference === 'system'));
     });
-    document.querySelectorAll('[data-selected-palette-name]').forEach(el => { el.textContent = names[palette]; });
-    const toggleLabel = theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode';
-    modeToggle?.setAttribute('aria-label', toggleLabel);
-    modeToggle?.setAttribute('title', toggleLabel);
-    if (announce && status) status.textContent = `${names[palette]} palette, ${theme} mode${mode === 'system' ? ', following your device' : ''}.`;
+    const message = preference === 'system'
+      ? `Following your device (${theme} mode)`
+      : `${theme === 'dark' ? 'Dark' : 'Light'} mode`;
+    if (themePreference) themePreference.textContent = message;
+    if (announce && themeStatus) themeStatus.textContent = message;
   }
 
-  document.querySelectorAll('[name="palette"]').forEach(input => input.addEventListener('change', () => {
-    if (palettes.includes(input.value)) { palette = input.value; applyPreferences(true); }
-  }));
-  document.querySelectorAll('[data-select-palette]').forEach(button => button.addEventListener('click', () => {
-    if (palettes.includes(button.dataset.selectPalette)) { palette = button.dataset.selectPalette; applyPreferences(true); }
-  }));
-  document.querySelectorAll('[name="display-mode"]').forEach(input => input.addEventListener('change', () => {
-    if (['light', 'dark', 'system'].includes(input.value)) { mode = input.value; applyPreferences(true); }
-  }));
-  modeToggle?.addEventListener('click', () => { mode = root.dataset.theme === 'light' ? 'dark' : 'light'; applyPreferences(true); });
-  media.addEventListener('change', () => { if (mode === 'system') applyPreferences(); });
+  function chooseTheme(value) {
+    if (!preferences.includes(value)) return;
+    preference = value;
+    try {
+      if (preference === 'system') window.localStorage.removeItem('smd-theme');
+      else window.localStorage.setItem('smd-theme', preference);
+    } catch (_) {
+      // The switch still works for this page when browser storage is blocked.
+    }
+    applyTheme(true);
+  }
 
-  const dialog = document.getElementById('appearance-dialog');
-  let opener;
-  document.querySelectorAll('[data-open-appearance]').forEach(button => button.addEventListener('click', () => {
-    opener = button;
-    if (!dialog.open) dialog.showModal();
-  }));
-  document.getElementById('appearance-close')?.addEventListener('click', () => dialog.close());
-  dialog?.addEventListener('click', event => {
-    if (event.target === dialog) {
-      const box = dialog.getBoundingClientRect();
-      if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) dialog.close();
+  themeToggle?.addEventListener('click', () => {
+    chooseTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
+  });
+  systemButtons.forEach(button => {
+    button.addEventListener('click', () => chooseTheme('system'));
+  });
+  const systemChanged = () => {
+    if (preference === 'system') applyTheme();
+  };
+  if (systemTheme.addEventListener) systemTheme.addEventListener('change', systemChanged);
+  else systemTheme.addListener(systemChanged);
+  window.addEventListener('storage', event => {
+    if (event.key !== 'smd-theme' && event.key !== null) return;
+    preference = preferences.includes(event.newValue) ? event.newValue : 'system';
+    applyTheme();
+  });
+  applyTheme();
+
+  const shell = document.querySelector('.navigation-shell');
+  const nav = document.getElementById('primary-navigation');
+  const menuToggle = document.getElementById('menu-toggle');
+  const interestsToggle = document.getElementById('interests-toggle');
+  const interestsPanel = document.getElementById('interests-panel');
+  if (!shell || !nav) return;
+
+  function setInterests(open, returnFocus = false) {
+    if (!interestsToggle || !interestsPanel) return;
+    interestsToggle.setAttribute('aria-expanded', String(open));
+    interestsToggle.setAttribute('aria-label', `${open ? 'Close' : 'Open'} Other Interests submenu`);
+    interestsPanel.hidden = !open;
+    if (returnFocus) interestsToggle.focus();
+  }
+
+  function setMenu(open, returnFocus = false) {
+    shell.dataset.menuOpen = String(open);
+    if (menuToggle) {
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.setAttribute('aria-label', `${open ? 'Close' : 'Open'} main menu`);
+      if (returnFocus) menuToggle.focus();
+    }
+    if (!open) setInterests(false);
+  }
+
+  if (menuToggle) {
+    menuToggle.hidden = false;
+    menuToggle.addEventListener('click', () => {
+      setMenu(menuToggle.getAttribute('aria-expanded') !== 'true');
+    });
+  }
+  if (interestsToggle) {
+    interestsToggle.hidden = false;
+    interestsToggle.addEventListener('click', () => {
+      setInterests(interestsToggle.getAttribute('aria-expanded') !== 'true');
+    });
+    interestsToggle.addEventListener('keydown', event => {
+      if (event.key !== 'ArrowDown') return;
+      event.preventDefault();
+      setInterests(true);
+      interestsPanel?.querySelector('a')?.focus();
+    });
+  }
+
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape') return;
+    if (interestsPanel && !interestsPanel.hidden) {
+      event.preventDefault();
+      setInterests(false, true);
+    } else if (!desktop.matches && shell.dataset.menuOpen === 'true') {
+      event.preventDefault();
+      setMenu(false, true);
     }
   });
-  dialog?.addEventListener('close', () => opener?.focus());
-
-  const header = document.querySelector('.site-header');
-  const menu = document.getElementById('menu-toggle');
-  const interests = document.getElementById('interests-toggle');
-  const panel = document.getElementById('interests-panel');
-  const setInterests = open => {
-    interests?.setAttribute('aria-expanded', String(open));
-    interests?.setAttribute('aria-label', `${open ? 'Collapse' : 'Expand'} Other Interests`);
-    if (panel) panel.hidden = !open;
-  };
-  const setMenu = open => {
-    header.dataset.menuOpen = String(open);
-    menu?.setAttribute('aria-expanded', String(open));
-    menu?.setAttribute('aria-label', `${open ? 'Close' : 'Open'} main menu`);
-    if (!open) setInterests(false);
-  };
-  menu?.addEventListener('click', () => setMenu(menu.getAttribute('aria-expanded') !== 'true'));
-  interests?.addEventListener('click', () => setInterests(interests.getAttribute('aria-expanded') !== 'true'));
-  document.addEventListener('click', event => { if (!header.contains(event.target)) setInterests(false); });
-  document.addEventListener('keydown', event => {
-    if (event.key !== 'Escape' || dialog?.open) return;
-    if (panel && !panel.hidden) { setInterests(false); interests.focus(); }
-    else if (menu?.getAttribute('aria-expanded') === 'true') { setMenu(false); menu.focus(); }
+  document.addEventListener('click', event => {
+    if (shell.contains(event.target)) return;
+    setInterests(false);
+    if (!desktop.matches) setMenu(false);
   });
-  matchMedia('(min-width: 761px)').addEventListener('change', () => setMenu(false));
+  shell.addEventListener('focusout', event => {
+    // Keep the submenu open while moving between its trigger and its links.
+    if (event.relatedTarget && !shell.contains(event.relatedTarget)) setInterests(false);
+  });
+  const viewportChanged = () => {
+    const hiddenFocus = !desktop.matches && nav.contains(document.activeElement);
+    const menuHadFocus = desktop.matches && document.activeElement === menuToggle;
+    setMenu(false, hiddenFocus);
+    if (menuHadFocus) nav.querySelector('a')?.focus();
+  };
+  if (desktop.addEventListener) desktop.addEventListener('change', viewportChanged);
+  else desktop.addListener(viewportChanged);
   setMenu(false);
-  applyPreferences();
 })();

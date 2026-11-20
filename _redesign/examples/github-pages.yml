@@ -1,0 +1,53 @@
+# Documentation example: inactive while stored in examples/.
+# Source is _redesign/. Set both working-directory values to . if it moves to the repository root.
+name: Publish Personal Archive
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v6
+      - name: Set up Ruby and install locked dependencies
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+          working-directory: _redesign
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+      - name: Build the site
+        working-directory: _redesign
+        env:
+          JEKYLL_ENV: production
+          PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+        run: bundle exec jekyll build --baseurl "$PAGES_BASE_PATH" --destination "$GITHUB_WORKSPACE/_site"
+      - name: Upload the generated site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

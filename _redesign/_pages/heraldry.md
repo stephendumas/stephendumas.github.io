@@ -1,13 +1,20 @@
 ---
-layout: "page"
-title: "Heraldic achievement"
-permalink: "/interests/heraldry/"
-nav_id: "heraldry"
-kicker: "Other interests"
-description: "My personal heraldry and monogram."
-status: "draft"
+layout: heraldry
+title: Heraldic Achievement
+permalink: /interests/heraldry/
+nav_id: heraldry
+kicker: Other interests
+description: My personal arms and heraldic achievement.
+status: draft
+sections:
+- id: arms
+  title: Arms
+- id: crest
+  title: Crest
+- id: supporters
+  title: Supporters
+- id: mottoes
+  title: Mottoes
 ---
 
-My monogram appears throughout this site as a link back to the home page. Its light and dark versions follow the selected appearance.
-
-The full heraldic achievement and its explanation will be added once the artwork is available.
+Explanations of the arms, crest, supporters, and mottoes will be added here.

@@ -1,4 +1,5 @@
 title: Stephen Michael Dumas
+subtitle: Research, history, and creative work.
 description: >-
   Electrical engineering, research, and a personal archive of history,
   genealogy, music, and game design by Stephen Michael Dumas.
@@ -7,7 +8,7 @@ author:
 lang: en-US
 timezone: America/Denver
 
-# Review deployment only. Change url after the custom-domain migration is ready.
+# Template preview. Set the canonical origin for the eventual public deployment.
 url: "https://stephendumas.github.io"
 baseurl: ""
 repository: stephendumas/stephendumas.github.io
@@ -27,6 +28,8 @@ exclude:
   - Gemfile.lock
   - README.md
   - MIGRATION.md
+  - examples
+  - docs
   - scripts
   - vendor
   - .bundle

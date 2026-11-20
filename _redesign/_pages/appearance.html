@@ -1,22 +1,11 @@
 ---
-layout: default
+layout: page
 title: Appearance
 permalink: /appearance/
 nav_id: appearance
-description: Compare four palettes for Stephen Michael Dumas's personal website, each with light and dark modes.
+description: Choose light mode, dark mode, or the appearance of your device.
 ---
-<div class="wrap design-page">
-  {% include breadcrumbs.html %}
-  <div class="design-heading"><div><p class="eyebrow">Website design review</p><h1>Four palettes.<br>One personal collection.</h1><p>Choose a palette to apply it across the site. Use the sun or moon button to compare light and dark modes, then explore the pages to see how each direction feels.</p></div><div class="current-theme">Currently viewing <strong data-selected-palette-name>Heraldic</strong></div></div>
-  <noscript><p class="no-js-note">The palette controls need JavaScript. All site pages remain available through the menu.</p></noscript>
-  <div class="palette-grid">
-    {% for palette in site.data.palettes %}<article class="palette-card">
-      <div class="mini-preview" data-preview="{{ palette.id }}" aria-label="{{ palette.title }} palette example">
-        <div class="mini-top"><span class="mini-logo"><img class="logo-light" src="{{ '/assets/img/monogram-light.svg' | relative_url }}" alt="" width="25" height="25"><img class="logo-dark" src="{{ '/assets/img/monogram-dark.svg' | relative_url }}" alt="" width="25" height="25"></span>Stephen M. Dumas</div>
-        <div class="mini-body"><div><p class="mini-kicker">Engineering · History · Creative work</p><h2>Stephen<br>Michael Dumas.</h2><p>An electrical engineer’s perspective.<br>A lifelong curiosity.</p><span class="mini-button" aria-hidden="true">Explore my research &nbsp; <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></div><img src="{{ '/assets/img/stephen-dumas.jpg' | relative_url }}" alt="" width="1365" height="2048" loading="lazy"></div>
-      </div>
-      <div class="palette-card-content"><div class="palette-card-title"><h2>{{ palette.title }}</h2><span class="palette-dots" aria-hidden="true">{% for color in palette.colors %}<i style="--swatch:{{ color }}"></i>{% endfor %}</span></div><p>{{ palette.description }}</p><button type="button" data-select-palette="{{ palette.id }}" aria-label="{{ palette.title }} palette" aria-pressed="false"><span data-palette-button-text>Try this palette</span><span aria-hidden="true">→</span></button></div>
-    </article>{% endfor %}
-  </div>
-  <div class="design-afterword"><p>These are color directions for the same multipage design. The heraldic palette uses your stated blue, red, and yellow colors; the precise shades can be refined against your artwork.</p><a class="button button-primary" href="{{ '/' | relative_url }}">See the full homepage <span aria-hidden="true"><svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a></div>
-</div>
+<p>Use the sun and moon switch in the header to choose light or dark mode. Your preference is remembered on this device.</p>
+<p>The first visit follows your device's appearance. You can return to that setting below.</p>
+<p><button type="button" class="text-button" data-use-system hidden>Use device setting</button></p>
+<noscript><p>The switch needs JavaScript. The site follows your device's appearance when JavaScript is unavailable.</p></noscript>
