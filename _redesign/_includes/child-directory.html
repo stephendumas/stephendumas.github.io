@@ -1,0 +1,8 @@
+{% if page.nav_id %}
+{% assign children = site.data.navigation | where: 'parent', page.nav_id %}
+{% if children.size > 0 %}
+<nav class="child-directory" aria-label="Explore this section">
+  <ul>{% for item in children %}<li><a href="{{ item.url | relative_url }}"><span class="child-title">{{ item.title | escape }}</span>{% if item.description %}<span class="child-description">{{ item.description | escape }}</span>{% endif %}<span class="child-arrow" aria-hidden="true">→</span></a></li>{% endfor %}</ul>
+</nav>
+{% endif %}
+{% endif %}

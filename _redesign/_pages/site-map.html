@@ -1,0 +1,11 @@
+---
+layout: page
+title: Site map
+permalink: /site-map/
+nav_id: site-map
+kicker: The complete collection
+description: Every section and archive entry, in one place.
+---
+<ul class="sitemap-tree">
+{% for top in site.data.navigation %}{% unless top.parent %}<li><a href="{{ top.url | relative_url }}">{{ top.title }}</a>{% assign second_level = site.data.navigation | where: 'parent', top.id %}{% if second_level.size > 0 %}<ul>{% for second in second_level %}<li><a href="{{ second.url | relative_url }}">{{ second.title }}</a>{% assign third_level = site.data.navigation | where: 'parent', second.id %}{% if third_level.size > 0 %}<ul>{% for third in third_level %}<li><a href="{{ third.url | relative_url }}">{{ third.title }}</a>{% assign fourth_level = site.data.navigation | where: 'parent', third.id %}{% if fourth_level.size > 0 %}<ul>{% for fourth in fourth_level %}<li><a href="{{ fourth.url | relative_url }}">{{ fourth.title }}</a></li>{% endfor %}</ul>{% endif %}</li>{% endfor %}</ul>{% endif %}</li>{% endfor %}</ul>{% endif %}</li>{% endunless %}{% endfor %}
+</ul>

@@ -1,0 +1,52 @@
+title: Stephen Michael Dumas
+subtitle: Research, history, and creative work.
+description: >-
+  Electrical engineering, research, and a personal archive of history,
+  genealogy, music, and game design by Stephen Michael Dumas.
+author:
+  name: Stephen Michael Dumas
+lang: en-US
+timezone: America/Denver
+
+# Template preview. Set the canonical origin for the eventual public deployment.
+url: "https://stephendumas.github.io"
+baseurl: ""
+repository: stephendumas/stephendumas.github.io
+review_mode: true
+
+encoding: UTF-8
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+strict_front_matter: true
+
+include:
+  - _pages
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - MIGRATION.md
+  - examples
+  - docs
+  - scripts
+  - vendor
+  - .bundle
+  - .jekyll-cache
+  - .jekyll-metadata
+  - dist
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: page
+
+kramdown:
+  input: GFM
+  auto_ids: true
+  hard_wrap: false
+
+sass:
+  style: compressed

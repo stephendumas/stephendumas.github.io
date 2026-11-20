@@ -1,0 +1,5 @@
+source "https://rubygems.org"
+
+# A small, independent Jekyll build. No al-folio or third-party plugins.
+gem "jekyll", "~> 4.3"
+gem "webrick", "~> 1.8"

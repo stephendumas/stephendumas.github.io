@@ -1,0 +1,130 @@
+- id: home
+  title: Home
+  url: /
+  parent: null
+  description: A personal home for engineering, history, and creative projects.
+- id: bio
+  title: Bio
+  url: /bio/
+  parent: null
+  description: Biography and academic background.
+- id: research
+  title: Research
+  url: /research/
+  parent: null
+  description: Research and engineering projects.
+- id: resume
+  title: Resume
+  url: /resume/
+  parent: null
+  description: Professional experience, education, and selected work.
+- id: contact
+  title: Contact
+  url: /contact/
+  parent: null
+  description: Contact details and public profiles.
+- id: interests
+  title: Other Interests
+  url: /interests/
+  parent: null
+  description: Family history, heraldry, dreams, music, and games.
+- id: genealogy
+  title: Genealogy
+  url: /interests/genealogy/
+  parent: interests
+  description: Family history, records, and stories.
+- id: heraldry
+  title: Heraldic Achievement
+  url: /interests/heraldry/
+  parent: interests
+  description: My personal arms and heraldic achievement.
+- id: dreams
+  title: Dreams
+  url: /interests/dreams/
+  parent: interests
+  description: A separate space for dreams and reflections.
+- id: music
+  title: Music
+  url: /interests/music/
+  parent: interests
+  description: Songs and musical projects.
+- id: games
+  title: Games
+  url: /interests/games/
+  parent: interests
+  description: Campaigns, scenarios, maps, and other game projects.
+- id: aoe
+  title: Age of Empires
+  url: /interests/games/age-of-empires/
+  parent: games
+  description: Campaigns, scenarios, and other projects for Age of Empires.
+- id: thutmose-iii
+  title: Thutmose III
+  url: /interests/games/age-of-empires/thutmose-iii/
+  parent: aoe
+  description: A project in the Age of Empires archive.
+- id: king-tut
+  title: King Tut
+  url: /interests/games/age-of-empires/king-tut/
+  parent: aoe
+  description: A project in the Age of Empires archive.
+- id: horse-and-his-boy
+  title: The Horse and His Boy
+  url: /interests/games/age-of-empires/the-horse-and-his-boy/
+  parent: aoe
+  description: A project in the Age of Empires archive.
+- id: trojan-war
+  title: The Trojan War
+  url: /interests/games/age-of-empires/the-trojan-war/
+  parent: aoe
+  description: A project in the Age of Empires archive.
+- id: duat
+  title: Journey Through the Duat
+  url: /interests/games/age-of-empires/journey-through-the-duat/
+  parent: aoe
+  description: A project in the Age of Empires archive.
+- id: aoe-misc
+  title: Misc
+  url: /interests/games/age-of-empires/misc/
+  parent: aoe
+  description: Other Age of Empires projects.
+- id: aoe2
+  title: 'Age of Empires II: The Age of Kings'
+  url: /interests/games/age-of-empires-ii/
+  parent: games
+  description: 'Campaigns, scenarios, and other projects for Age of Empires II: The Age of Kings.'
+- id: belasarious
+  title: Belasarious
+  url: /interests/games/age-of-empires-ii/belasarious/
+  parent: aoe2
+  description: 'A project in the Age of Empires II: The Age of Kings archive.'
+- id: wanli
+  title: Emperor Wanli
+  url: /interests/games/age-of-empires-ii/emperor-wanli/
+  parent: aoe2
+  description: 'A project in the Age of Empires II: The Age of Kings archive.'
+- id: ice-age
+  title: 'The Ice Age: The Age of Ice'
+  url: /interests/games/age-of-empires-ii/the-ice-age/
+  parent: aoe2
+  description: 'A project in the Age of Empires II: The Age of Kings archive.'
+- id: aoe2-misc
+  title: Misc
+  url: /interests/games/age-of-empires-ii/misc/
+  parent: aoe2
+  description: 'Other Age of Empires II: The Age of Kings projects.'
+- id: tribes
+  title: 'Starsiege: Tribes'
+  url: /interests/games/starsiege-tribes/
+  parent: games
+  description: 'Maps and other projects for Starsiege: Tribes.'
+- id: the-tower
+  title: The Tower
+  url: /interests/games/starsiege-tribes/the-tower/
+  parent: tribes
+  description: 'A project in the Starsiege: Tribes archive.'
+- id: tribes-misc
+  title: Misc
+  url: /interests/games/starsiege-tribes/misc/
+  parent: tribes
+  description: 'Other Starsiege: Tribes projects.'

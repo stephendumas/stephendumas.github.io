@@ -1,0 +1,9 @@
+<aside class="section-sidebar" aria-label="Section navigation">
+{% if page.url contains '/interests/' %}
+  <h2><a href="{{ '/interests/' | relative_url }}">Other Interests</a></h2>
+  <nav aria-label="Other Interests"><ul class="side-links">{% assign interests = site.data.navigation | where: 'parent', 'interests' %}{% for item in interests %}<li><a href="{{ item.url | relative_url }}"{% if item.id == page.nav_id %} aria-current="page"{% endif %}>{{ item.title | escape }}</a></li>{% endfor %}</ul></nav>
+  {% if page.url contains '/interests/games/' %}<div class="game-navigation"><h3>Games archive</h3>{% assign families = site.data.navigation | where: 'parent', 'games' %}{% for family in families %}<details{% if page.url contains family.url %} open{% endif %}><summary>{{ family.title | escape }}</summary><ul><li><a href="{{ family.url | relative_url }}"{% if family.id == page.nav_id %} aria-current="page"{% endif %}>Overview</a></li>{% assign projects = site.data.navigation | where: 'parent', family.id %}{% for item in projects %}<li><a href="{{ item.url | relative_url }}"{% if item.id == page.nav_id %} aria-current="page"{% endif %}>{{ item.title | escape }}</a></li>{% endfor %}</ul></details>{% endfor %}</div>{% endif %}
+{% else %}
+  <h2>Explore</h2><nav aria-label="Page directory"><ul class="side-links">{% for item in site.data.navigation %}{% unless item.parent %}<li><a href="{{ item.url | relative_url }}"{% if item.id == page.nav_id %} aria-current="page"{% endif %}>{{ item.title | escape }}</a></li>{% endunless %}{% endfor %}</ul></nav>
+{% endif %}
+</aside>

@@ -1,0 +1,17 @@
+<script>
+  /* Apply the color scheme before styles load to avoid a light flash. */
+  (function () {
+    var preference = 'system';
+    try { preference = localStorage.getItem('smd-theme') || 'system'; } catch (_) {}
+    if (['light', 'dark', 'system'].indexOf(preference) < 0) preference = 'system';
+    var preview = new URLSearchParams(location.search).get('theme');
+    if (['light', 'dark', 'system'].indexOf(preview) >= 0) preference = preview;
+    var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = preference === 'system' ? (dark ? 'dark' : 'light') : preference;
+    var root = document.documentElement;
+    root.dataset.preference = preference;
+    root.dataset.theme = theme;
+    root.style.colorScheme = theme;
+    root.classList.add('js');
+  })();
+</script>
