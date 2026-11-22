@@ -70,6 +70,7 @@ contact forms are represented as working when their content is absent.
 | `assets/css/site.css` | Typography, responsive layout, and the selected light/dark palette |
 | `assets/js/site.js` | Theme preference and navigation behavior |
 | `assets/img/` | Original identity artwork and portrait |
+| `assets/icons/` | Approved favicon master and generated PNG icon sizes |
 | `examples/` | Copyable page and deployment examples, excluded from the generated site |
 
 ### Add or finish a page
@@ -188,6 +189,21 @@ status marker and write matching heading IDs, for example `## Arms {#arms}` in
 Markdown; this prevents duplicate anchors. The two artwork variants should
 depict the same achievement with the approved light/dark surroundings; they
 are page content, not shared header decoration.
+
+### Favicon
+
+The favicon uses the approved gold SMD monogram and full laurel wreath on a
+blue circle with a fine gold rim. It is the same in every theme; the website's
+theme switch does not change it. The header's shield and light/dark monogram
+remain separate identity artwork.
+
+`assets/icons/favicon-master.png` is the source artwork. Regenerate the icon
+exports with `scripts/build-favicons.sh`: `favicon.ico` contains 16-, 32-, and
+48-pixel variants, `assets/icons/favicon-16.png`, `favicon-32.png`, and
+`favicon-48.png` provide those sizes as PNGs, and
+`assets/icons/apple-touch-icon.png` supplies the 180-pixel touch icon. The shared
+layout references these files through `relative_url`, including under a
+GitHub Pages project base path.
 
 ## Hosting paths
 
