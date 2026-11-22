@@ -1,10 +1,10 @@
 /* Personal Archive — approved ivory, crimson, navy, and gold design. */
 :root {
   color-scheme: light;
-  --canvas:#f3eee4; --paper:#fffaf0; --ink:#102a4a; --muted:#515c68;
+  --canvas:#e8dcc4; --paper:#f4e7cb; --ink:#102a4a; --muted:#515c68;
   --heading:#900c22; --gold:#ac781d; --gold-bright:#f0c44b; --rule:#b88832;
   --crimson:#a4001c; --crimson-deep:#880017; --nav-ink:#fffaf1;
-  --panel:#fffcf5; --hover:#f0e4c9; --focus:#0f559b; --shadow:0 3px 18px #241c1212;
+  --panel:#f8efd9; --hover:#f0e4c9; --focus:#0f559b; --shadow:0 3px 18px #241c1212;
   --light-image:block; --dark-image:none;
   font-family:Georgia,"Times New Roman",serif; font-size:100%;
 }
