@@ -193,9 +193,10 @@ are page content, not shared header decoration.
 ### Favicon
 
 The favicon uses the approved gold SMD monogram and full laurel wreath on a
-blue circle with a fine gold rim. It is the same in every theme; the website's
-theme switch does not change it. The header's shield and light/dark monogram
-remain separate identity artwork.
+solid blue circle, with no outer rim. The monogram and wreath are slightly
+larger within the circle to make better use of the available space. It is the
+same in every theme; the website's theme switch does not change it. The
+header's shield and light/dark monogram remain separate identity artwork.
 
 `assets/icons/favicon-master.png` is the source artwork. Regenerate the icon
 exports with `scripts/build-favicons.sh`: `favicon.ico` contains 16-, 32-, and
