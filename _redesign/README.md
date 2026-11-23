@@ -1,6 +1,6 @@
 # The Personal Archive — Jekyll template
 
-Stephen Michael Dumas's approved website design, implemented as a standalone
+Stephen Dumas's approved website design, implemented as a standalone
 Jekyll source tree. The template uses the Personal Archive layout, the Heraldic
 Library palette, the selected shield in the shared header, and the professional
 portrait in the homepage body. Light and dark modes share the same layout.

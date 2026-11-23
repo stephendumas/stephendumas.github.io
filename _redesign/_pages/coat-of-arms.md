@@ -9,7 +9,7 @@ status: draft
 ---
 
 <figure class="achievement-gallery">
-  <img src="{{ '/assets/img/shield-original.png' | relative_url }}" alt="Stephen Michael Dumas's coat of arms" width="520" height="520" loading="lazy">
+  <img src="{{ '/assets/img/shield-original.png' | relative_url }}" alt="Stephen Dumas's coat of arms" width="520" height="520" loading="lazy">
 </figure>
 
 The blazon and an explanation of the shield's design will be added here.

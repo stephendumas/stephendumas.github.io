@@ -13,8 +13,8 @@ layout: default
     <div>
       {% if page.artwork_light or page.artwork_dark %}
       <figure class="achievement-gallery">
-        <img class="logo-light" src="{{ page.artwork_light | default: page.artwork_dark | relative_url }}" alt="{{ page.artwork_alt | default: 'Heraldic achievement of Stephen Michael Dumas' | escape }}" loading="lazy">
-        <img class="logo-dark" src="{{ page.artwork_dark | default: page.artwork_light | relative_url }}" alt="{{ page.artwork_alt | default: 'Heraldic achievement of Stephen Michael Dumas' | escape }}" loading="lazy">
+        <img class="logo-light" src="{{ page.artwork_light | default: page.artwork_dark | relative_url }}" alt="{{ page.artwork_alt | default: 'Heraldic achievement of Stephen Dumas' | escape }}" loading="lazy">
+        <img class="logo-dark" src="{{ page.artwork_dark | default: page.artwork_light | relative_url }}" alt="{{ page.artwork_alt | default: 'Heraldic achievement of Stephen Dumas' | escape }}" loading="lazy">
       </figure>
       {% else %}
       <div class="artwork-placeholder"><span>Heraldic Achievement</span><p>The complete artwork and its story will be added here.</p></div>
