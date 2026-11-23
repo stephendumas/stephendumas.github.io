@@ -14,37 +14,13 @@
       <li class="nav-item{% if is_active %} is-active{% endif %}{% if item.id == 'interests' %} nav-item-interests{% endif %}">
         <a class="nav-link" href="{{ item.url | relative_url }}"{% if page.nav_id == item.id %} aria-current="page"{% endif %}>{{ item.title | escape }}</a>
         {% if item.id == 'interests' %}
-        <button type="button" class="interests-toggle" id="interests-toggle" aria-label="Open Other Interests submenu" aria-controls="interests-panel" aria-expanded="false" hidden>
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+        <button type="button" class="interests-toggle submenu-toggle" id="interests-toggle" data-submenu-label="Other Interests" aria-label="Open Other Interests submenu" aria-controls="submenu-interests" aria-expanded="false" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
         </button>
+        {% include navigation-branch.html parent_id='interests' label='Other Interests' %}
         {% endif %}
       </li>
       {% endunless %}{% endfor %}
     </ul>
   </nav>
-  <div class="interests-panel" id="interests-panel">
-    <nav class="interests-grid" aria-label="Other Interests submenu">
-      <section class="interests-column">
-        <h2 class="interests-heading"><a href="{{ '/interests/' | relative_url }}"{% if page.nav_id == 'interests' %} aria-current="page"{% endif %}>Other Interests</a></h2>
-        <ul class="interests-links">
-          {% assign interest_pages = site.data.navigation | where: 'parent', 'interests' %}
-          {% for item in interest_pages %}
-          <li><a href="{{ item.url | relative_url }}"{% if page.nav_id == item.id %} aria-current="page"{% endif %}>{{ item.title | escape }}</a></li>
-          {% endfor %}
-        </ul>
-      </section>
-      {% assign game_families = site.data.navigation | where: 'parent', 'games' %}
-      {% for family in game_families %}
-      <section class="interests-column">
-        <h2 class="interests-heading"><a href="{{ family.url | relative_url }}"{% if page.nav_id == family.id %} aria-current="page"{% endif %}>{{ family.title | escape }}</a></h2>
-        <ul class="interests-links">
-          {% assign game_pages = site.data.navigation | where: 'parent', family.id %}
-          {% for item in game_pages %}
-          <li><a href="{{ item.url | relative_url }}"{% if page.nav_id == item.id %} aria-current="page"{% endif %}>{{ item.title | escape }}</a></li>
-          {% endfor %}
-        </ul>
-      </section>
-      {% endfor %}
-    </nav>
-  </div>
 </div>

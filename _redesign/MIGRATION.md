@@ -10,6 +10,8 @@ source is retained at the repository root.
 The selected design uses the Personal Archive layout, the Heraldic Library
 palette, the supplied transparent shield in the header, and the professional
 portrait on the homepage. The full achievement is reserved for its own page.
+Heraldry has separate pages for the Coat of Arms, Heraldic Achievement,
+Monogram, and Family Cypher.
 
 ## Finish the content
 

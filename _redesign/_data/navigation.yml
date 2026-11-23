@@ -29,10 +29,30 @@
   parent: interests
   description: Family history, records, and stories.
 - id: heraldry
-  title: Heraldic Achievement
+  title: Heraldry
   url: /interests/heraldry/
   parent: interests
-  description: My personal arms and heraldic achievement.
+  description: My coat of arms, heraldic achievement, monogram, and family cypher.
+- id: coat-of-arms
+  title: Coat of Arms
+  url: /interests/heraldry/coat-of-arms/
+  parent: heraldry
+  description: My personal shield and its design.
+- id: heraldic-achievement
+  title: Heraldic Achievement
+  url: /interests/heraldry/heraldic-achievement/
+  parent: heraldry
+  description: The complete achievement, including the arms, crest, supporters, and mottoes.
+- id: monogram
+  title: Monogram
+  url: /interests/heraldry/monogram/
+  parent: heraldry
+  description: My personal monogram and laurel.
+- id: family-cypher
+  title: Family Cypher
+  url: /interests/heraldry/family-cypher/
+  parent: heraldry
+  description: The family cypher and its design.
 - id: dreams
   title: Dreams
   url: /interests/dreams/
@@ -88,14 +108,14 @@
   url: /interests/games/age-of-empires-ii/
   parent: games
   description: 'Campaigns, scenarios, and other projects for Age of Empires II: The Age of Kings.'
-- id: belasarious
-  title: Belasarious
-  url: /interests/games/age-of-empires-ii/belasarious/
-  parent: aoe2
-  description: 'A project in the Age of Empires II: The Age of Kings archive.'
 - id: wanli
   title: Emperor Wanli
   url: /interests/games/age-of-empires-ii/emperor-wanli/
+  parent: aoe2
+  description: 'A project in the Age of Empires II: The Age of Kings archive.'
+- id: belisarius
+  title: Belisarius
+  url: /interests/games/age-of-empires-ii/belisarius/
   parent: aoe2
   description: 'A project in the Age of Empires II: The Age of Kings archive.'
 - id: ice-age

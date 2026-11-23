@@ -1,8 +1,8 @@
 ---
 layout: project
-title: Belasarious
-permalink: /interests/games/age-of-empires-ii/belasarious/
-nav_id: belasarious
+title: Belisarius
+permalink: /interests/games/age-of-empires-ii/belisarius/
+nav_id: belisarius
 kicker: 'Age of Empires II: The Age of Kings'
 description: 'A project in the Age of Empires II: The Age of Kings archive.'
 status: draft

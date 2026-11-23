@@ -1,0 +1,17 @@
+<ul class="submenu{% if include.parent_id == 'interests' %} interests-panel{% endif %}" id="submenu-{{ include.parent_id }}" aria-label="{{ include.label | escape }} submenu">
+  {% assign branch_items = site.data.navigation | where: 'parent', include.parent_id %}
+  {% for branch_item in branch_items %}
+  {% assign branch_children = site.data.navigation | where: 'parent', branch_item.id %}
+  <li class="submenu-item">
+    <div class="submenu-row">
+      <a href="{{ branch_item.url | relative_url }}"{% if page.nav_id == branch_item.id %} aria-current="page"{% endif %}>{{ branch_item.title | escape }}</a>
+      {% if branch_children.size > 0 %}
+      <button type="button" class="submenu-toggle" data-submenu-label="{{ branch_item.title | escape }}" aria-label="Open {{ branch_item.title | escape }} submenu" aria-controls="submenu-{{ branch_item.id }}" aria-expanded="false" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
+      </button>
+      {% endif %}
+    </div>
+    {% if branch_children.size > 0 %}{% include navigation-branch.html parent_id=branch_item.id label=branch_item.title %}{% endif %}
+  </li>
+  {% endfor %}
+</ul>

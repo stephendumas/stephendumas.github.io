@@ -48,6 +48,7 @@ control and does not make a publicly hosted preview private.
 - Light and dark modes, device preference by default, and a remembered override.
 - A responsive homepage based on the selected directory layout.
 - Separate pages for every destination in the current navigation hierarchy.
+- Nested Other Interests menus, with individual Heraldry pages and game archives.
 - Reusable content, archive, project, and heraldry layouts.
 - Breadcrumbs, section navigation, a site map, and a 404 page.
 - A documented GitHub Pages deployment example for the later migration.
@@ -130,9 +131,22 @@ Other Interests might be registered as:
   description: A short description of the page.
 ```
 
-Give the corresponding page `nav_id: example`. Existing deep game URLs and
-project titles are preserved, including the supplied spelling `Belasarious`.
-Use a unique ID even when several archives contain a page named `Misc`.
+Give the corresponding page `nav_id: example`. Use a unique ID even when several
+archives contain a page named `Misc`. Entries with the same parent appear in
+their data-file order; Emperor Wanli is followed by Belisarius in the Age of
+Empires II archive. Belisarius uses the corrected `/belisarius/` path.
+
+The Heraldry archive at `/interests/heraldry/` has four child pages: Coat of Arms,
+Heraldic Achievement, Monogram, and Family Cypher. The navigation data drives
+their submenu, the archive's directory, and the site map.
+
+Other Interests opens a single list. Heraldry and Games expand their own
+branches; each game then expands its project list. On wide screens the nested
+lists open to the left, keeping them inside the page beside the rightmost
+navigation item. At compact and phone widths they expand inline. Category
+names remain links to their overview pages, with a separate arrow button for
+each submenu. The menus support click, desktop hover, Tab, Enter, Arrow Down
+to enter a branch, and Escape to close a level and return focus.
 
 ### Project details and downloads
 
@@ -163,8 +177,9 @@ transparent shield selected for the site. Keep it as a separate source asset;
 do not replace it with a shield redrawn from a mockup. The portrait likewise
 uses the supplied professional photograph.
 
-The full achievement belongs to the dedicated heraldry page. Its layout accepts
-these optional front-matter values when the final page artwork is ready:
+The full achievement belongs to `_pages/heraldic-achievement.md` at
+`/interests/heraldry/heraldic-achievement/`. Its layout accepts these optional
+front-matter values when the final page artwork is ready:
 
 ```yaml
 artwork_light: /assets/img/achievement-light.png
