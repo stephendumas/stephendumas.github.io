@@ -108,7 +108,7 @@ h1,h2,h3,h4 {line-height:1.2;text-wrap:balance}
 .game-links li {padding:.12rem 0}
 .game-links li::marker {color:var(--gold)}
 .game-links a {text-decoration:none}
-.home-content {border-top:1px solid var(--rule);margin-top:2rem;padding-top:1.5rem}
+.home-content {border-top:1px solid var(--rule);margin-top:2rem;margin-inline:auto;padding-top:1.5rem}
 .site-footer {max-width:1180px;margin:.9rem auto 0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.25rem 1.25rem;color:var(--muted);font-family:system-ui,sans-serif;font-size:.875rem}
 .site-footer p {margin:0}
 .site-footer nav {display:flex;gap:1.2rem}

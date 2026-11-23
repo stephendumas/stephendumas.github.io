@@ -15,7 +15,7 @@ layout: default
     <section class="home-column background-column" aria-labelledby="background-heading">
       <h2 id="background-heading">Life &amp; background</h2>
       <ul class="directory-links">
-        {% assign background_ids = 'bio,resume,contact,genealogy' | split: ',' %}
+        {% assign background_ids = 'resume,contact,genealogy' | split: ',' %}
         {% for id in background_ids %}{% assign item = site.data.navigation | where: 'id', id | first %}
         <li><a href="{{ item.url | relative_url }}">{{ item.title | escape }} <span aria-hidden="true">→</span></a></li>
         {% endfor %}

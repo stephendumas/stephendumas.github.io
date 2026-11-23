@@ -13,7 +13,7 @@ portrait on the homepage. The full achievement is reserved for its own page.
 
 ## Finish the content
 
-Complete and review the biography, research, resume, contact details, and
+Complete and review the research, resume, contact details, and
 interest pages. Add real game files, screenshots, credits, and installation
 notes as the project pages are developed. Replace placeholder content and
 remove `status: draft` from pages that are ready. Keep intentional omissions

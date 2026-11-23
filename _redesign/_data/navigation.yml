@@ -3,11 +3,6 @@
   url: /
   parent: null
   description: A personal home for engineering, history, and creative projects.
-- id: bio
-  title: Bio
-  url: /bio/
-  parent: null
-  description: Biography and academic background.
 - id: research
   title: Research
   url: /research/

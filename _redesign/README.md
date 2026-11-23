@@ -47,14 +47,14 @@ control and does not make a publicly hosted preview private.
 - Shared header, selected shield, monogram, and crimson menu bar.
 - Light and dark modes, device preference by default, and a remembered override.
 - A responsive homepage based on the selected directory layout.
-- Separate pages for every destination in the supplied menu hierarchy.
+- Separate pages for every destination in the current navigation hierarchy.
 - Reusable content, archive, project, and heraldry layouts.
 - Breadcrumbs, section navigation, a site map, and a 404 page.
 - A documented GitHub Pages deployment example for the later migration.
 
 The individual pages are deliberately unfinished. Their short placeholders and
 `status: draft` markers distinguish the working template from a completed
-biography, resume, research archive, or collection of projects. No downloads or
+resume, research archive, or collection of projects. No downloads or
 contact forms are represented as working when their content is absent.
 
 ## Where to edit
@@ -80,10 +80,10 @@ Write content in Markdown beneath its YAML front matter. A basic page is:
 ```markdown
 ---
 layout: page
-title: Bio
-permalink: /bio/
-nav_id: bio
-description: Biography and academic background.
+title: Research
+permalink: /research/
+nav_id: research
+description: Research and engineering projects.
 status: draft
 ---
 
@@ -114,7 +114,7 @@ Do not put `baseurl` into each page's `permalink` or into the navigation data.
 | Layout | Use |
 | --- | --- |
 | `home` | The selected homepage composition |
-| `page` | Biography, research, resume, contact, and ordinary articles |
+| `page` | Research, resume, contact, and ordinary articles |
 | `archive` | Category pages that list child destinations from the navigation data |
 | `project` | Individual campaigns, scenarios, maps, and related projects |
 | `heraldry` | The dedicated achievement page, with themed artwork and a contents list |
