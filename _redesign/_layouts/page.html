@@ -1,0 +1,18 @@
+---
+layout: default
+---
+<div class="inner-page">
+  {% include breadcrumbs.html %}
+  <div class="page-grid">
+    {% include sidebar.html %}
+    <article class="page-article">
+      <header class="page-heading">
+        <h1>{{ page.title | escape }}</h1>
+        {% if page.description %}<p class="page-deck">{{ page.description | escape }}</p>{% endif %}
+        {% if page.status == 'draft' %}<p class="draft-note">Page in preparation</p>{% endif %}
+      </header>
+      <div class="prose">{{ content }}</div>
+      {% include child-directory.html %}
+    </article>
+  </div>
+</div>

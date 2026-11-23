@@ -1,0 +1,43 @@
+---
+layout: default
+---
+<div class="home-page">
+  <header class="home-intro">
+    <h1>{{ page.welcome | default: 'Welcome to my personal website.' | escape }}</h1>
+    <p>{{ page.topics | default: 'Electrical engineering · Space systems · Personal interests' | escape }}</p>
+  </header>
+  <div class="archive-columns">
+    <section class="home-column research-column" aria-labelledby="research-heading">
+      <h2 id="research-heading">Research</h2>
+      <p>{{ page.research_intro | default: 'A collection of research in electrical engineering and space systems.' | escape }}</p>
+      <a class="research-link" href="{{ '/research/' | relative_url }}">Explore my research <span aria-hidden="true">→</span></a>
+    </section>
+    <section class="home-column background-column" aria-labelledby="background-heading">
+      <h2 id="background-heading">Life &amp; background</h2>
+      <ul class="directory-links">
+        {% assign background_ids = 'resume,contact,genealogy' | split: ',' %}
+        {% for id in background_ids %}{% assign item = site.data.navigation | where: 'id', id | first %}
+        <li><a href="{{ item.url | relative_url }}">{{ item.title | escape }} <span aria-hidden="true">→</span></a></li>
+        {% endfor %}
+      </ul>
+    </section>
+    <figure class="home-portrait">
+      <img src="{{ '/assets/img/stephen-dumas.jpg' | relative_url }}" alt="Stephen Dumas, wearing a dark suit and red tie" width="1365" height="2048" fetchpriority="high">
+    </figure>
+    <section class="home-column interests-column-home" aria-labelledby="interests-heading">
+      <h2 id="interests-heading">Other interests</h2>
+      <ul class="directory-links">
+        {% assign interest_ids = 'heraldry,dreams,music' | split: ',' %}
+        {% for id in interest_ids %}{% assign item = site.data.navigation | where: 'id', id | first %}
+        <li><a href="{{ item.url | relative_url }}">{{ item.title | escape }} <span aria-hidden="true">→</span></a></li>
+        {% endfor %}
+      </ul>
+      <h3 class="games-label"><a href="{{ '/interests/games/' | relative_url }}">Games</a></h3>
+      <ul class="game-links">
+        {% assign families = site.data.navigation | where: 'parent', 'games' %}
+        {% for family in families %}<li><a href="{{ family.url | relative_url }}">{% if family.id == 'aoe2' %}Age of Empires II{% else %}{{ family.title | escape }}{% endif %} <span aria-hidden="true">→</span></a></li>{% endfor %}
+      </ul>
+    </section>
+  </div>
+  {% assign extra_content = content | strip %}{% if extra_content != '' %}<div class="home-content prose">{{ content }}</div>{% endif %}
+</div>

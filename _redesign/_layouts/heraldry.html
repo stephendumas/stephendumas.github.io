@@ -1,0 +1,26 @@
+---
+layout: default
+---
+<div class="inner-page heraldry-page">
+  {% include breadcrumbs.html %}
+  <header class="page-heading"><h1>{{ page.title | escape }}</h1>{% if page.status == 'draft' %}<p class="draft-note">Page in preparation</p>{% endif %}</header>
+  <div class="heraldry-grid">
+    <nav class="heraldry-contents" aria-label="On this page">
+      <h2>On this page</h2>
+      <ul>{% for section in page.sections %}<li><a href="#{{ section.id | escape }}">{{ section.title | escape }}</a></li>{% endfor %}</ul>
+      {% if page.artwork_light or page.artwork_dark %}<a class="full-size-link logo-light" href="{{ page.artwork_light | default: page.artwork_dark | relative_url }}">View full-size</a><a class="full-size-link logo-dark" href="{{ page.artwork_dark | default: page.artwork_light | relative_url }}">View full-size</a>{% endif %}
+    </nav>
+    <div>
+      {% if page.artwork_light or page.artwork_dark %}
+      <figure class="achievement-gallery">
+        <img class="logo-light" src="{{ page.artwork_light | default: page.artwork_dark | relative_url }}" alt="{{ page.artwork_alt | default: 'Heraldic achievement of Stephen Dumas' | escape }}" loading="lazy">
+        <img class="logo-dark" src="{{ page.artwork_dark | default: page.artwork_light | relative_url }}" alt="{{ page.artwork_alt | default: 'Heraldic achievement of Stephen Dumas' | escape }}" loading="lazy">
+      </figure>
+      {% else %}
+      <div class="artwork-placeholder"><span>Heraldic Achievement</span><p>The complete artwork and its story will be added here.</p></div>
+      {% endif %}
+      <div class="prose">{{ content }}</div>
+      {% if page.status == 'draft' %}<div class="heraldry-sections">{% for section in page.sections %}<section id="{{ section.id | escape }}"><h2>{{ section.title | escape }}</h2><p>This section is being prepared.</p></section>{% endfor %}</div>{% endif %}
+    </div>
+  </div>
+</div>
